@@ -1,4 +1,6 @@
 # Assign Owner Role for all reservations
+# https://learn.microsoft.com/ko-kr/azure/cost-management-billing/reservations/view-reservations#assign-the-owner-role-for-all-reservations
+
 Import-Module Az.Accounts
 Import-Module Az.Resources
 
