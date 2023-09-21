@@ -1,0 +1,21 @@
+# Azure SPN 로그인
+# Disable-AzContextAutosave –Scope Process
+
+# Connect using a Managed Service Identity
+try {
+        $AzureContext = (Connect-AzAccount -Identity).context
+    }
+catch{
+        Write-Output "There is no system-assigned user identity. Aborting."; 
+        exit
+    }
+
+# 하루전 스냅샷 삭제
+$rg = "k8s-rg"
+
+$snapshotnames = (Get-AzSnapshot -ResourceGroupName $rg).name
+
+foreach($snapname in $snapshotnames)
+{
+    Get-AzSnapshot -ResourceGroupName $rg -SnapshotName $snapname | ?{($_.TimeCreated) -lt ([datetime]::UtcNow.AddDays(-1))} | remove-Azsnapshot -force
+}
