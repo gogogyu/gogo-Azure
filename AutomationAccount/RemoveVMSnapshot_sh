@@ -1,3 +1,6 @@
+# This is a script for OS that does not support Azure Backup.
+# This uses managed identities and the Az module.
+
 # Azure SPN 로그인
 # Disable-AzContextAutosave –Scope Process
 
