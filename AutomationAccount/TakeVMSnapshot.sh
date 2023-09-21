@@ -1,3 +1,6 @@
+# This is a script for OS that does not support Azure Backup.
+# This uses managed identities and the Az module.
+
 $automationAccount = "demo-AutomationAccount-VMSnapshot"
 
 # Connect using a Managed Service Identity
